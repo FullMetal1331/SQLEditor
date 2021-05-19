@@ -9,6 +9,10 @@ app.use(
 
 app.use(express.json())
 
+app.get('/', (req, res)=>{
+	res.send('sdfsdf');
+})
+
 app.get('/getTableFields/:table', (req, res)=>{
 	const tempMap = {
 		'customers':['customerId','customerName','age','address','rating'],
