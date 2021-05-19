@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import Loader from '../Components/Loader';
 import SnackBar from '../Components/SnackBar';
+import {apiurl} from '../config.js';
 
 import {useStyles} from '../Styles/styles';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
@@ -111,9 +112,9 @@ const QueryPage = (props) => {
 	
 	const closeSnackBar = (event, reason) => {
 		if (reason === 'clickaway') {
-      return;
-    }
-    setSnackBar(false);
+	      return;
+	    }
+	    setSnackBar(false);
 	}
 	
 	function handleOnDragEnd(result) {
@@ -174,7 +175,7 @@ const QueryPage = (props) => {
 		if(initialQuery.table!=='' && initialQuery.operation!=='' && initialQuery.fields.length!==0){
 			setLoader(true);
 			axios
-			.get(`/getQueryResponse/${finalQuery}`)
+			.get(`${apiurl}/getQueryResponse/${finalQuery}`)
 			.then((res)=>{
 				console.log(res);
 				setFinalResult(res.data);
@@ -199,7 +200,7 @@ const QueryPage = (props) => {
 		
 		if(opt1!==''){
 			axios
-			.get(`/getTableFields/${opt1}`)
+			.get(`${apiurl}/getTableFields/${opt1}`)
 			.then((res)=>{
 				var tempArr = [];
 				res.data.map((ele,ind)=>{

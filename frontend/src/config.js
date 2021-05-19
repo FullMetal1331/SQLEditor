@@ -1,0 +1,1 @@
+export const apiurl = https://sql-editor-backend.vercel.app;
