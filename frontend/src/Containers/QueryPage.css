@@ -1,0 +1,72 @@
+.Query-Page{
+	height:90%;
+	
+	background-color: rgb(229, 231, 249);
+}
+
+.Query-Generator-Option{
+	max-height: 60%;
+	
+	display:flex;
+	justify-content:flex-start;
+	align-items:center;
+	
+	padding:2%;
+}
+
+/*.Query-Generator-Option{
+	height: 60%;
+	
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	
+	padding: 2%;
+}*/
+.Query-Generator-Option-List-Container{
+	height:96%;
+	width: 25%;
+	margin-left:5%;
+}
+.Query-Generator-Option-List{
+	height:80%;
+	min-height:80%;
+	width: 100%;
+	
+	overflow-y: auto;
+	overflow-x: hidden;
+	
+	display:flex;
+	flex-grow:1;
+	flex-direction:column;
+	align-items:center;
+	
+	border-radius: 5px;
+	
+	padding-left:0;
+	
+}
+.Fields-List-Tile{
+	height:25%;
+	width:90%;
+	
+	padding:2%;
+	margin:5px;
+	
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	
+	border:1px solid grey;
+	box-shadow:0px 2px 1px -1px rgba(0,0,0,0.2),0px 1px 1px 0px rgba(0,0,0,0.14),0px 1px 3px 0px rgba(0,0,0,0.12);
+	border-radius: 5px;
+}
+.Query-Generator-Fields-Button{
+	height:40%;
+	
+	padding:2%;
+	
+	display:flex;
+	flex-direction:column;
+	justify-content:space-around;
+}
