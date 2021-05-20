@@ -13,6 +13,11 @@ app.get('/', (req, res)=>{
 	res.send('sdfsdf');
 })
 
+app.get('/getTables', (req, res)=>{
+	const tempArr = ['customers','products','interns'];
+	res.send(tempArr);
+});
+
 app.get('/getTableFields/:table', (req, res)=>{
 	const tempMap = {
 		'customers':['customerId','customerName','age','address','rating'],
@@ -182,7 +187,37 @@ app.get('/getQueryResponse/:query', (req, res)=>{
 				tempFieldArr.map((ele2,ind2)=>{
 					tempObj[ele2] = ele[ele2];
 				})
-				finalData.push(tempObj);
+				
+				if(tempQueryArr.length>4){
+					switch (tempQueryArr[6]) {
+					  case '>':
+					    if(ele[tempQueryArr[5]]>((isNaN(parseInt(tempQueryArr[7])))?ele[tempQueryArr[7]]:parseInt(tempQueryArr[7])))finalData.push(tempObj);
+					    break;
+					  case '>=':
+					    if(ele[tempQueryArr[5]]>=((isNaN(parseInt(tempQueryArr[7])))?ele[tempQueryArr[7]]:parseInt(tempQueryArr[7])))finalData.push(tempObj);
+					    break;
+					  case '=':
+					    if(ele[tempQueryArr[5]]===((isNaN(parseInt(tempQueryArr[7])))?ele[tempQueryArr[7]]:parseInt(tempQueryArr[7])))finalData.push(tempObj);
+					    break;
+					  case '!=':
+					    if(ele[tempQueryArr[5]]!=((isNaN(parseInt(tempQueryArr[7])))?ele[tempQueryArr[7]]:parseInt(tempQueryArr[7])))finalData.push(tempObj);
+					    break;
+					  case '<=':
+					    if(ele[tempQueryArr[5]]<=((isNaN(parseInt(tempQueryArr[7])))?ele[tempQueryArr[7]]:parseInt(tempQueryArr[7])))finalData.push(tempObj);
+					    break;
+					  case '<':
+					    if(ele[tempQueryArr[5]]<((isNaN(parseInt(tempQueryArr[7])))?ele[tempQueryArr[7]]:parseInt(tempQueryArr[7])))finalData.push(tempObj);
+					}
+				}
+				else{
+					finalData.push(tempObj);
+				}
+				
+				// if(tempQueryArr[6]==='>'){
+					
+				// }
+				// if(ele[tempQueryArr[5]])
+				// finalData.push(tempObj);
 			}
 		})
 	}
@@ -190,4 +225,5 @@ app.get('/getQueryResponse/:query', (req, res)=>{
 	res.send(finalData);
 });
 
-app.listen(5000, ()=>console.log('Listening to port 5000...'));
+const PORT = process.env.PORT||5000;
+app.listen(PORT, ()=>console.log(`Listening to port ${PORT}...`));

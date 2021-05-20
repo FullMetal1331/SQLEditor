@@ -8,15 +8,15 @@ const SnackBar = (props) => {
 	return(
 		<Snackbar 
 			open={props.open} 
-			autoHideDuration={2000} 
+			autoHideDuration={(props.message.length>35)?5000:2000} 
 			onClose={props.closeSnackBar}
 			anchorOrigin={{ vertical:'bottom', horizontal:'left' }}
 		>
-      <SnackbarContent
-      	message={'Please generate a valid query'} 
-      	style={{backgroundColor:'rgb(255, 105, 97)'}}
-      />
-    </Snackbar>
+			<SnackbarContent
+				message={props.message} 
+				style={{backgroundColor:'rgb(255, 105, 97)'}}
+			/>
+	    </Snackbar>
 	);
 }
 
